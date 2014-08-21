@@ -1,4 +1,4 @@
-check: python-check rust-check
+check: python-check rust-check scala-check
 
 python-run:
 	python python/main.py < input | tee python.out
@@ -19,7 +19,7 @@ rust-check: rust-run
 rust-clean:
 	rm -f rust.out rust/bin
 
-clean: python-clean rust-clean
+clean: python-clean rust-clean scala-clean
 
 scala-run:
 	mkdir -p scala/classes
