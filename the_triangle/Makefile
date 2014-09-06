@@ -21,8 +21,8 @@ rust-clean:
 
 scala-run:
 	mkdir -p scala/classes
-	scalac -d scala/classes scala/main.scala
-	scala -cp scala/classes main < input > scala.out
+	scalac -classpath 'scala/lib/*' -d scala/classes scala/main.scala
+	scala -cp 'target/scala-2.10/classes:scala/lib/*' main < input | tee scala.out
 
 scala-check: scala-run
 	diff scala.out output
