@@ -1,3 +1,5 @@
+import scalaz._, Scalaz._, effect._, IO._
+
 object main {
 
   type Row = IndexedSeq[Int]
@@ -10,23 +12,28 @@ object main {
         Math.max(left, right) + node.toInt
     }
 
-  private[this] def zeroArray(len: Int) =
-    Array.fill(len)(0)
-
+  private[this] def zeroArray(len: Int) = Array.fill(len)(0)
   private[this] val max = parse _
+  private[this] val ident = identity[Row] _
 
-  def solve(read: () => String): Int = {
-    var k = identity[Row](_)
-    val n = read().toInt
-    for (i <- 1 to n) {
-      val line = read()
-      k = max(line) andThen k
+  def readLnN(n: Int): IO[IndexedSeq[String]] = IO {
+    (1 to n).map { _ => readLine() }
+  }
+
+  def program = {
+    val n: IO[Int] = readLn.map(_.toInt)
+    val lines: IO[IndexedSeq[String]] = n.flatMap(readLnN)
+    val ans = lines.map { ls =>
+      val cont = ls.foldLeft(ident) {
+        (fun, line) => max(line) andThen fun
+      }
+      cont(zeroArray (ls.size+1))(0)
     }
-    k(zeroArray (n+1))(0)
+    ans.flatMap { i:Int => putStrLn(i.toString) }
   }
 
   def main(args: Array[String]) {
-    println(solve { () => readLine().stripLineEnd })
+    program.unsafePerformIO
   }
 
 }
