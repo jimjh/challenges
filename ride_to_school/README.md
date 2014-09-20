@@ -4,7 +4,7 @@ Ride to School [[1](http://poj.org/problem?id=1922)]
 Many graduate students of Peking University are living in Wanliu Campus, which
 is 4.5 kilometers from the main campus -- Yanyuan. Students in Wanliu
 have to either take a bus or ride a bike to go to school. Due to the bad traffic
-in Beijing, many students choose to ride a bike. 
+in Beijing, many students choose to ride a bike.
 
 We may assume that all the students except "Charley" ride from Wanliu to Yanyuan
 at a fixed speed. Charley is a student with a different riding habit --
@@ -13,24 +13,24 @@ to the gate of Wanliu, he will look for someone who is setting off to Yanyuan.
 If he finds someone, he will follow that rider, or if not, he will wait for
 someone to follow. On the way from Wanliu to Yanyuan, at any time if a faster
 student surpassed Charley, he will leave the rider he is following and speed up
-to follow the faster one. 
+to follow the faster one.
 
 We assume the time that Charley gets to the gate of Wanliu is zero. Given the
 set off time and speed of the other students, your task is to give the time when
-Charley arrives at Yanyuan. 
+Charley arrives at Yanyuan.
 
 #####Input Format
 
 There are several test cases. The first line of each case is N (1 <= N <= 10000)
 representing the number of riders (excluding Charley). N = 0 ends the input. The
-following N lines are information of N different riders, in such format: 
+following N lines are information of N different riders, in such format:
 
-Vi [TAB] Ti 
+Vi [TAB] Ti
 
 Vi is a positive integer <= 40, indicating the speed of the i-th rider (kph,
 kilometers per hour). Ti is the set off time of the i-th rider, which is an
 integer and counted in seconds. In any case it is assured that there always
-exists a nonnegative Ti. 
+exists a nonnegative Ti.
 
 #####Output Format
 
