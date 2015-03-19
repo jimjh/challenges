@@ -10,7 +10,8 @@ object main {
         Iterator
             .continually(readLine())
             .takeWhile(defined)
-            .map(_.stripLineEnd).toIndexedSeq
+            .map(_.stripLineEnd)
+            .toIndexedSeq
       println(solve(fragments))
       println()
     }
