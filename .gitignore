@@ -2,3 +2,7 @@
 bin
 *.classes
 *.class
+
+target/
+.idea/
+project/

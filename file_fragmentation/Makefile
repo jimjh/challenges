@@ -21,8 +21,22 @@ rust-clean:
 
 clean: python-clean rust-clean
 
+scala-run:
+	mkdir -p scala/classes
+	scalac -d scala/classes scala/src/main/scala/main.scala
+	scala -cp scala/classes main < input > scala.out
+
+scala-check: scala-run
+	diff scala.out output
+
+scala-clean:
+	rm -rf scala/classes
+	rm -f scala.out
+
 .PHONY:
 	python-run
 	python-check
 	rust-run
 	rust-check
+	scala-run
+	scala-check
